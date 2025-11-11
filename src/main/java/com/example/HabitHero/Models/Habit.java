@@ -8,14 +8,26 @@ import java.util.UUID;
 public class Habit {
 
     private UUID habitID;
+    private UUID userID;
     private String name;
     private String description;
     private LocalDate startDate;
     private int timesPerDay;
     private boolean archived;
-    private final List<HabitLog> logs = new ArrayList<>();
+    //private final List<HabitLog> logs = new ArrayList<>(); вынесу логи в отдельный класс потом(HabitRepository)
 
-    public Habit(String name, String description, LocalDate startDate, int timesPerDay, boolean archived) {
+    /*
+    public void addLog(HabitLog log){
+        logs.add(log);
+    }
+
+    public List<HabitLog> getLogs() {
+        return logs;
+    }*/
+
+    public Habit(UUID habitID, UUID userID, String name, String description, LocalDate startDate, int timesPerDay, boolean archived) {
+        this.habitID = habitID;
+        this.userID = userID;
         this.name = name;
         this.description = description;
         this.startDate = startDate;
@@ -23,12 +35,28 @@ public class Habit {
         this.archived = archived;
     }
 
-    public void addLog(HabitLog log){
-        logs.add(log);
+    public UUID getHabitID() {
+        return habitID;
     }
 
-    public List<HabitLog> getLogs() {
-        return logs;
+    public void setHabitID(UUID habitID) {
+        this.habitID = habitID;
+    }
+
+    public UUID getUserID() {
+        return userID;
+    }
+
+    public void setUserID(UUID userID) {
+        this.userID = userID;
+    }
+
+    public int getTimesPerDay() {
+        return timesPerDay;
+    }
+
+    public void setTimesPerDay(int timesPerDay) {
+        this.timesPerDay = timesPerDay;
     }
 
     public String getName() {
