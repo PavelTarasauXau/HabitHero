@@ -14,16 +14,7 @@ public class Habit {
     private LocalDate startDate;
     private int timesPerDay;
     private boolean archived;
-    //private final List<HabitLog> logs = new ArrayList<>(); вынесу логи в отдельный класс потом(HabitRepository)
-
-    /*
-    public void addLog(HabitLog log){
-        logs.add(log);
-    }
-
-    public List<HabitLog> getLogs() {
-        return logs;
-    }*/
+    private final List<HabitLog> logs = new ArrayList<>(); //это надо будет вынести в отдельный класс
 
     public Habit(UUID habitID, UUID userID, String name, String description, LocalDate startDate, int timesPerDay, boolean archived) {
         this.habitID = habitID;
@@ -97,6 +88,14 @@ public class Habit {
 
     public void setArchived(boolean archived) {
         this.archived = archived;
+    }
+
+    public void addLog(HabitLog log){
+        logs.add(log);
+    }
+
+    public List<HabitLog> getLogs() {
+        return logs;
     }
 
 }
